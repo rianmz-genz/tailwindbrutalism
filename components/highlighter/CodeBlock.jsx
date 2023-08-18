@@ -1,32 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css"; // Import the desired theme or your custom one.
+import "prismjs/themes/prism-tomorrow.css"; // Import the desired theme
+import CopyButton from "./CopyButton";
+import ResponsiveButton from "./ResponsiveButton";
+import PreviewCode from "./PreviewCode";
 
-class CodeBlock extends React.Component {
-  componentDidMount() {
+const CodeBlock = ({ code, language }) => {
+  useEffect(() => {
     Prism.highlightAll();
-  }
+  }, [code, language]);
 
-  componentDidUpdate() {
-    Prism.highlightAll();
-  }
-
-  render() {
-    const { code, language } = this.props;
-    return (
-      <>
-        <div className=" mt-20 mx-auto  rounded-xl relative w-[1000px] h-[400px] bg-slate-800">
-          <div className="absolute -top-3 -left-2 w-full h-full ">
-            <pre
-              className={`language-${language} h-full rounded-xl overflow-hidden border-1 border-slate-800`}
-            >
-              <code className={`language-${language}`}>{code}</code>
-            </pre>
-          </div>
+  return (
+    <>
+      <div className="flex justify-between">
+        <div className="flex gap-2">
+          <PreviewCode />
+          <CopyButton />
         </div>
-      </>
-    );
-  }
-}
+        <ResponsiveButton />
+      </div>
+      <pre className={`language-${language}`}>
+        <code className={`language-${language}`}>{code}</code>
+      </pre>
+    </>
+  );
+};
 
 export default CodeBlock;
