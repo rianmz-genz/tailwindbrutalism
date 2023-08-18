@@ -14,7 +14,7 @@ const MyComponent = () => {
       <CodeBlock
         code={myCodeString}
         language="html"
-        Component={() => <HeroSection title="My Title" />}
+        
       />
     </div>
   );
