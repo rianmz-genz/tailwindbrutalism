@@ -1,21 +1,21 @@
 import React from "react";
 import CodeBlock from "@/components/highlighter/CodeBlock";
+import HeroSection from "@/components/sections/HeroSection";
+import ReactDOMServer from "react-dom/server";
+import beautify from 'html';
 
 const MyComponent = () => {
-  const myCodeString = `
-  <div className="mt-10 ">
-  <div className=" bg-slate-800 w-56 relative h-10 rounded-lg  ">
-    <div className="absolute text-lg justify-startflex items-center bg-white border rounded-lg border-slate-800">
-      <p>Simple but impactful</p>
-    
-    </div>
-  </div>
-</div>
-`;
+  const rawCode = ReactDOMServer.renderToString(<HeroSection title="My Title" />);
+  const myCodeString = beautify.prettyPrint(rawCode, { indent_size: 2 }); // Beautify with 2-space indentation
+
 
   return (
-    <div className="p-5 bg-rose-300">
-      <CodeBlock code={myCodeString} language="html" />
+    <div className="p-5">
+      <CodeBlock
+        code={myCodeString}
+        language="html"
+        Component={() => <HeroSection title="My Title" />}
+      />
     </div>
   );
 };
