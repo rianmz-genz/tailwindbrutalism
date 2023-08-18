@@ -55,7 +55,7 @@ function HeroSection(props) {
             </div>
           </div>
         </div>
-        <div className=""></div>
+        <div className=""> </div>
       </div>
     </section>
   );
