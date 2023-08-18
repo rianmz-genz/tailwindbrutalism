@@ -14,7 +14,7 @@ const MyComponent = () => {
 `;
 
   return (
-    <div>
+    <div className="p-5 bg-rose-300">
       <CodeBlock code={myCodeString} language="html" />
     </div>
   );
