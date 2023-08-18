@@ -2,7 +2,7 @@ import React from "react";
 import withContainer from "../wrapper/Container";
 import { AiFillGithub, AiFillHeart } from "react-icons/ai";
 import Image from "next/image";
-function HeroSection(props) {
+function HeroSection(props, { title }) {
   return (
     <section>
       <div className="flex">
